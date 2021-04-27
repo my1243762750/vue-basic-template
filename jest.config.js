@@ -14,11 +14,18 @@ module.exports = {
     // '**/tests/unit/**/*.spec.(js|jsx|ts|tsx)|**/__tests__/*.(js|jsx|ts|tsx)'
     // '**/tests/unit/utils/*.spec.(js|jsx|ts|tsx)|**/__tests__/*.(js|jsx|ts|tsx)'
     // '**/tests/unit/utils/common.spec.(js|jsx|ts|tsx)|**/__tests__/*.(js|jsx|ts|tsx)'
-    '**/tests/unit/api/common.spec.(js|jsx|ts|tsx)|**/__tests__/*.(js|jsx|ts|tsx)'
+    // '**/tests/unit/api/common.spec.(js|jsx|ts|tsx)|**/__tests__/*.(js|jsx|ts|tsx)'
+    '**/tests/unit/src/**/*.spec.(js|jsx|ts|tsx)|**/__tests__/*.(js|jsx|ts|tsx)'
   ],
-  collectCoverageFrom: ['src/utils/**/*.{js,vue}', '!src/utils/auth.js', '!src/utils/request.js', 'src/components/**/*.{js,vue}'],
+  collectCoverageFrom: [
+    'src/utils/**/*.{js,vue}',
+    '!src/utils/auth.js',
+    '!src/utils/request.js',
+    'src/components/**/*.{js,vue}',
+    'src/views/login/**/*.{js,vue}'
+  ],
   coverageDirectory: '<rootDir>/tests/unit/coverage',
-  // 'collectCoverage': true,
+  'collectCoverage': true,
   'coverageReporters': [
     'lcov',
     'text-summary'
