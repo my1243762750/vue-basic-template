@@ -88,6 +88,45 @@ export const constantRoutes = [
         meta: { title: 'Form', icon: 'form' }
       }
     ]
+  },
+
+  {
+    path: '/userManagement',
+    name: 'UserManagement',
+    redirect: '/userManagement/manageUser',
+    meta: {
+      title: 'User Management',
+      icon: 'form'
+    },
+    component: Layout,
+    children: [
+      {
+        path: 'manageUser',
+        name: 'ManageUser',
+        component: () => import('@/views/userManagement/manageUser/index'),
+        meta: { title: 'Manage User', icon: 'form' }
+      },
+      {
+        path: 'manageUserDetail',
+        name: 'ManageUserDetail',
+        hidden: true,
+        component: () => import('@/views/userManagement/manageUser/detail'),
+        meta: { title: 'Manage User Detail', icon: 'form' }
+      },
+      {
+        path: 'manageRole',
+        name: 'ManageRole',
+        component: () => import('@/views/userManagement/manageRole/index'),
+        meta: { title: 'Manage Role', icon: 'form' }
+      },
+      {
+        path: 'manageRoleDetail',
+        name: 'ManageRoleDetail',
+        hidden: true,
+        component: () => import('@/views/userManagement/manageRole/detail'),
+        meta: { title: 'Form', icon: 'form' }
+      }
+    ]
   }
 ]
 

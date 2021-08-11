@@ -63,3 +63,195 @@ div:focus {
 .app-container {
   padding: 20px;
 }
+
+.position-relative {
+  position: relative;
+}
+
+.position-absolute {
+  position: absolute;
+}
+
+.display-none {
+  display: none;
+}
+
+.display-none-important{
+  display: none !important;
+}
+
+.display-inline-block {
+  display: inline-block;
+}
+
+.visibility-hidden {
+  visibility: hidden;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.cursor-not-allowed {
+  cursor: not-allowed;
+
+  &:hover{
+    cursor: not-allowed;
+  }
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-left-important {
+  text-align: left !important;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-ellipsis{
+  display: block;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.break-all{
+  word-break: break-all;
+}
+
+.border {
+  border: solid 1px;
+}
+
+.border-gray {
+  border: solid 1px #DCDFE6;
+}
+
+.border-red {
+  border: solid 1px red;
+}
+
+.border-yellow {
+  border: solid 1px yellow;
+}
+
+.border-blue {
+  border: solid 1px blue;
+}
+
+.border-orange {
+  border: solid 1px orange;
+}
+
+.border-purple {
+  border: solid 1px purple;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.flex-wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-start-center {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.flex-between-center {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex-end-center {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.flex-center-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-end-end {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.padding-0 {
+  padding: 0;
+}
+
+.margin-top-20 {
+  margin-top: 20px;
+}
+
+.margin-bottom-20 {
+  margin-bottom: 20px;
+}
+
+.margin-left-12 {
+  margin-left: 12px;
+}
+
+.margin-left-27 {
+  margin-left: 27px;
+}
+
+.font-14 {
+  font-size: 14px;
+}
+
+.font-16 {
+  font-size: 16px;
+}
+
+.font-18 {
+  font-size: 18px;
+}
+
+.font-20 {
+  font-size: 20px;
+}
+
+.font-24 {
+  font-size: 24px;
+}
+
+.color-link{
+  color: #409EFF;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.overflow-y-scroll{
+  overflow-y: auto;
+  overflow-x: hidden;
+}

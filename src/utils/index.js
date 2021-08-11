@@ -1,5 +1,5 @@
 /**
- * Created by PanJiaChen on 16/11/18.
+ * Created by MeiYang on 2021/08/10.
  */
 
 /**
@@ -114,4 +114,123 @@ export function param2Obj(url) {
     }
   })
   return obj
+}
+
+/**
+ * @param time
+ * @returns {null|{month: (*|number), hour: any, year: number, day: any, minute: any, second: any}}
+ */
+export function getDateTime(time) {
+  if (!time) {
+    return null
+  }
+  time = new Date(handlerUTCorGMT(time))
+  const year = time.getFullYear()
+  let month = time.getMonth() + 1
+  let day = time.getDate()
+  let hour = time.getHours()
+  let minute = time.getMinutes()
+  let second = time.getSeconds()
+  month = month < 10 ? '0' + month : month
+  day = day < 10 ? '0' + day : day
+  hour = hour < 10 ? '0' + hour : hour
+  minute = minute < 10 ? '0' + minute : minute
+  second = second < 10 ? '0' + second : second
+  return {
+    year,
+    month,
+    day,
+    hour,
+    minute,
+    second
+  }
+}
+
+/**
+ * 时间处理
+ * @param dateTime
+ * @returns {string|*}
+ */
+export function handlerUTCorGMT(dateTime) {
+  if (dateTime && dateTime.indexOf('T') > -1) {
+    const strDateTimeArr = dateTime.split('T')
+    const strDate = strDateTimeArr[0]
+    let strTime = strDateTimeArr[1]
+    if (strTime && strTime.indexOf('.') > 0) {
+      strTime = strTime.split('.')[0]
+    } else if (strTime && strTime.indexOf('Z') > 0) {
+      strTime = strTime.split('Z')[0]
+    }
+    return (strDate + ' ' + strTime).replace(/-/g, '/')
+  }
+  return dateTime.replace(/-/g, '/')
+}
+
+/**
+ * 参数转大写
+ * @param response
+ * @returns {{}}
+ */
+export function toLowerCaseResponseHeader(response) {
+  const result = {}
+  for (const key in response) {
+    result[key.toLowerCase()] = response[key]
+  }
+  return result
+}
+
+/**
+ * 文件下载
+ * @param res
+ */
+export function download(res) {
+  const getName = (str) => {
+    const defaultName = 'file'
+    if (!str) {
+      return defaultName
+    }
+    const strList = str.split(';')
+    const fileNameStr = strList.filter((item) => {
+      return item.toLowerCase().indexOf('filename') > -1
+    })
+    const fileNameList = fileNameStr[0].split('=') || []
+    let fileName = fileNameList[1]
+    if (fileName) {
+      fileName = fileName.replace(/"/g, '')
+    }
+    return fileName || defaultName
+  }
+  let headers = res.headers || {}
+  headers = toLowerCaseResponseHeader(headers)
+  // 获取响应头主要获取附件名称
+  const contentDisposition = headers['content-disposition']
+  // 获取类型类型和编码
+  const contentType = headers['content-type']
+  // 构造blob对象,具体看头部提供的链接地址
+  const blob = new Blob([res.data], {
+    type: contentType
+  })
+  if (window.navigator.msSaveOrOpenBlob) {
+    window.navigator.msSaveOrOpenBlob(blob, getName(contentDisposition))
+  } else {
+    const url = window.URL.createObjectURL(blob)
+    const a = document.createElement('a')
+    a.href = url
+    a.download = getName(contentDisposition)
+    a.click()
+    window.URL.revokeObjectURL(url)
+  }
+}
+
+/**
+ * 空值处理
+ * @param value
+ * @param symbol
+ * @returns {*|string}
+ */
+export function emptyHandle(value, symbol = '--') {
+  if (value === 0) {
+    return value
+  }
+  return value || symbol
 }
