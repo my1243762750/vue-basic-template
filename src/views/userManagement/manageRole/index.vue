@@ -12,7 +12,7 @@
         </div>
         <div>
           <debounce-button @click="moveToDetail({}, $dic.pageType.add.value)">Add</debounce-button>
-          <debounce-button>Delete</debounce-button>
+          <debounce-button @click="deleteRows">Delete</debounce-button>
         </div>
       </div>
       <!--export-->
@@ -120,6 +120,9 @@ export default {
     deleteRow() {
       this.deleteDialogVisible = false
       console.log('delete row')
+    },
+    deleteRows() {
+      console.log('deleteRows')
     }
   }
 }

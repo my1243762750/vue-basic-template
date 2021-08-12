@@ -8,6 +8,10 @@ export default {
     debounce: {
       type: Number,
       default: 300
+    },
+    size: {
+      type: String,
+      default: 'small'
     }
   },
   watch: {
