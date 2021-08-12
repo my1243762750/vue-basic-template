@@ -59,15 +59,12 @@ export default {
     }
   },
   methods: {
-    // 删除
     deleteRows() {
       this.$emit('delete')
     },
-    // 取消
     cancel() {
       this.$emit('cancel')
     },
-    // 关闭
     close() {
       this.$emit('update:visible', false)
     }

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-form v-model="form" :rules="rules">
+    <el-form ref="form" :model="form" :rules="rules">
       <!--role name-->
       <el-row>
         <el-col>
@@ -85,15 +85,20 @@ export default {
     },
     add() {
       console.log('form', this.getForm())
-      this.$showFullScreenLoading()
-      setTimeout(() => {
-        this.$closeFullScreenLoading()
-        this.$message({
-          message: 'Operate successfully',
-          type: 'success'
-        })
-        this.back()
-      }, 2000)
+      this.$refs['form'].validate((valid) => {
+        if (!valid) {
+          return
+        }
+        this.$showFullScreenLoading()
+        setTimeout(() => {
+          this.$closeFullScreenLoading()
+          this.$message({
+            message: 'Operate successfully',
+            type: 'success'
+          })
+          this.back()
+        }, 2000)
+      })
     },
     back() {
       this.$router.back()
